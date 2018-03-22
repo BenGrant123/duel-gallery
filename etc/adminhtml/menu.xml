@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+		<menu>
+			<add id="Duel_Gallery::duel" title="Duel" translate="title" module="Duel_Gallery" parent="Magento_Backend::content" sortOrder="50" dependsOnModule="Duel_Gallery" resource="Duel_Gallery::duel"/>
+			<add id="Duel_Gallery::duel_galleries" title="Manage Galleries and Emails" translate="title" module="Duel_Gallery" parent="Duel_Gallery::duel" sortOrder="1" dependsOnModule="Duel_Gallery" action="gallery/duelprods/index" resource="Duel_Gallery::duel"/>
+			<add id="Duel_Gallery::duel_duelfeed" title="Manage Product Feed" translate="title" module="Duel_Gallery" parent="Duel_Gallery::duel" sortOrder="2" dependsOnModule="Duel_Gallery" action="gallery/feedlist" resource="Duel_Gallery::duel"/>
+			<add id="Duel_Gallery::duel_previews" title="Preview Duel emails" translate="title" module="Duel_Gallery" parent="Duel_Gallery::duel" sortOrder="3" dependsOnModule="Duel_Gallery" action="gallery/previews" resource="Duel_Gallery::duel"/>
+			<add id="Duel_Gallery::duel_logviewer" title="View Logs" translate="title" module="Duel_Gallery" parent="Duel_Gallery::duel" sortOrder="4" dependsOnModule="Duel_Gallery" action="gallery/logviewer" resource="Duel_Gallery::duel"/>
+		</menu>
+</config>
+

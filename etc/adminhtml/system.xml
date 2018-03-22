@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Duel" translate="label" sortOrder="1000">
+            <label>Duel</label>
+        </tab>
+        <section id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Settings</label>
+            <tab>Duel</tab>
+            <resource>Duel_Gallery::config_gallery</resource>
+            <group id="defaults" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Galleries</label>
+                <field id="show_galleries" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show galleries on product pages</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="duel_colour" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Gallery Colour</label>
+                    <frontend_model>Duel\Gallery\Block\Color</frontend_model>
+                </field>
+                <field id="duel_background_colour" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Gallery Background Colour</label>
+                    <frontend_model>Duel\Gallery\Block\Color</frontend_model>
+                </field>
+                <field id="duel_rows" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Rows</label>
+                    <source_model>Duel\Gallery\Model\Config\Source\DuelDefaultRowsAndColumns</source_model>
+                </field>
+                <field id="duel_columns" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Columns</label>
+                    <source_model>Duel\Gallery\Model\Config\Source\DuelDefaultRowsAndColumns</source_model>
+                </field>
+                <field id="duel_page_position" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Page Position of Gallery (standard layout)</label>
+                    <source_model>Duel\Gallery\Model\Config\Source\DuelDefaultPagePositions</source_model>
+                </field>
+                <field id="duel_page_selector" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Page Position of Gallery (choose your own CSS selector)</label>
+                </field>
+            </group>
+
+            <group id="emails" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Duel post-purchase emails</label>
+                <field id="duel_email_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Duel post-purchase emails</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="duel_brand_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>The Duel Short Id for your brand</label>
+                </field>
+                <field id="duel_email_delay" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delay between shipping and sending Duel email (days)</label>
+                    <source_model>Duel\Gallery\Model\Config\Source\DuelEmailDelayOptions</source_model>
+                </field>
+                <field id="duel_email" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Duel Post Purchase Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="duel_logging" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Log Duel follow-up emails</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="newwidthrule" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Add new CSS width rule for gallery columns / rows</label>
+                <frontend_model>Duel\Gallery\Block\Adminhtml\Newwidthrule</frontend_model>
+            </group>
+
+            <group id="widthrules" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Update CSS width rule for gallery columns / rows</label>
+                <frontend_model>Duel\Gallery\Block\Adminhtml\Widthrules</frontend_model>
+                
+            </group>
+        </section>
+        
+    </system>
+</config>

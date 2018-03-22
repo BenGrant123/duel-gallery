@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="settings_emails_duel_email" label="Duel Post Purchase Email" file="settings_emails_duel_email.html" type="html" module="Duel_Gallery" area="frontend"/>
+</config>

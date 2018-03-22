@@ -1,0 +1,62 @@
+<!--@subject New order from {{config path="general/store_information/name"}}  @-->
+<!--@styles 
+.duel-para { 
+    vertical-align: middle;
+    display: inline-block;
+}
+.product-thumbnail {
+    width: 100px;
+}
+.product-name {
+    width: 150px;
+    margin-left: 60px;
+}
+.product-link {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #1E90FF;
+    width: 150px;
+    margin-left: 30px;
+}
+p.duel-para.product-link>a {
+    color: #ffffff!important;
+}
+.duel-product-image {
+    border-radius: 5px;
+    width: 100%;
+}
+@-->
+{{template config_path="design/email/header_template"}}
+<h1>{{config path="general/store_information/name"}}</h1>
+<table>
+    <tr class="email-intro">
+        <td>
+            <p class="greeting">
+                ORDER#{{trans "%orderId" orderId=$data.order_id}},
+                <h1>Your order has been delivered</h1>
+            </p>
+            <p>Haven't received your package yet? <a href="mailto:{{config path='trans_email/ident_general/email'}}">Let us know</a>
+            </p>
+        </td>
+    </tr>
+    <tr>
+         <td>
+            <p style="padding: 15px 0; text-align: center; width: 100%; border-radius: 5px; background-color: #1E90FF;"><a style="color: white;" href="{{config path='web/secure/base_url'}}customer/account/">View your order</a></p>
+            <p style="padding: 15px 0; text-align: center; width: 100%; border-radius: 5px;">or <a style="color: #1E90FF;" href="{{config path='web/secure/base_url'}}">Visit our store</a></p>
+         </td>
+    </tr>
+    <tr>
+        <td>
+            <h1>Win £60 and feature on our website</h1>
+            <p>Upload a photo of your recently purchased items for a chance to win a £60 voucher to spend in our store and feature on our website.</p>
+             
+            <h1>Items in this shipment:</h1>
+            
+        </td>
+    </tr>
+
+    {{block class='Magento\\Framework\\View\\Element\\Template' area='frontend' template='Duel_Gallery::email/items.phtml' items=$data.orderItems brand_id=$data.brandId}}
+    
+</table>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,15 @@
+<?php
+
+$orderItems = $block->getItems();
+$brandId = $block->getBrandId();
+
+foreach ($orderItems as $key => $item) {
+    echo '<p class="duel-para product-thumbnail">'
+    . '<img class="duel-product-image" src="'
+    . $item['thumbnail'] . '"></p>';
+    echo '<p class="duel-para product-name">'
+    . $item['name'] . '</p>';
+    $uploadLink = '<a href="https://duel.me/p/' . $brandId . '/'
+    . $item['sku'] . '">Upload your ' . $item['name'] . ' now</a>';
+    echo '<p class="duel-para product-link">' . $uploadLink . '</p>';
+}

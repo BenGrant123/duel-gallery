@@ -1,0 +1,69 @@
+<script async src="https://vision.duel.me/loader.js"></script>
+<script>
+    window.DuelVision = window.DuelVision || function(o) {
+        (DuelVision.s = DuelVision.s || []).push(o)
+    };
+    var duelGalleryJSON = '<?php echo $this->getGallery() ?>';
+    var duelGallery = JSON.parse(duelGalleryJSON);
+    console.log(duelGallery);
+    if (duelGallery && duelGallery.active) {
+        var duelColour = duelGallery.colour;
+        var duelBackgroundColour = duelGallery.background_colour;
+        var duelPagePosition = parseInt(duelGallery.page_position);
+        var duelPageCustom = duelGallery.page_position_custom;
+        var duelDefaultPagePosition = parseInt(duelGallery.default_page_position);
+        var duelDefaultPageCustom = duelGallery.default_page_position_custom
+        DuelVision({
+            product: duelGallery.product,
+            sort: 'created',
+            color: duelColour,
+            backgroundColor: duelBackgroundColour,
+            layoutRules: duelGallery.layout_rules,
+        });
+    }
+</script>
+<div id="duelvision-component"></div>
+<script>
+    require(["jquery"], function($) {
+        $(document).ready(function() {
+            if (duelPageCustom && $(duelPageCustom).length) {
+                console.log($(duelPageCustom))
+                $('#duelvision-component').appendTo($(duelPageCustom));
+            } else if (duelPagePosition && duelPagePosition > 0) {
+                StandardPagePositions(duelPagePosition);
+            } else if (duelDefaultPageCustom && $(duelDefaultPageCustom).length) {
+                $('#duelvision-component').appendTo($(duelDefaultPageCustom));
+            } else if (duelDefaultPagePosition && duelDefaultPagePosition > 0) {
+                StandardPagePositions(duelDefaultPagePosition);
+            } else if ($('.product-info-main').length) {
+                $('#duelvision-component').appendTo($('.product-info-main'));
+            }
+
+            function StandardPagePositions(option) {
+            	switch (option) {
+                    case 1:
+                        if ($('.product-info-main').length) {
+                            $('#duelvision-component').appendTo($('.product-info-main'));
+                        }
+                        break;
+                    case 2:
+                        if ($('.product.info.detailed').length) {
+                            $('#duelvision-component').prependTo($('.product.info.detailed'));
+                        }
+                        break;
+                    case 3:
+                        if ($('.product.info.detailed').length) {
+                            $('#duelvision-component').appendTo($('.product.info.detailed'));
+                        }
+                        break;
+                    case 4:
+                        if ($('.product.media').length) {
+                            $('#duelvision-component').appendTo($('.product.media'));
+                        }
+                        break;
+                }
+            }
+
+        });
+    });
+</script>
