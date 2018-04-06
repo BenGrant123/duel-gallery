@@ -36,7 +36,6 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ['legend' => __('Send a preview of the Duel follow-up email:'), 'class' => 'fieldset-wide']
         );
         
-        
         $colorField1 = $fieldset->addField(
             'preview_email',
             'text',

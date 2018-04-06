@@ -61,15 +61,14 @@ class Tail extends \Magento\Backend\App\Action
         }
         fclose($handle);
 
-        $dlFile = '<a href="' . $this->getUrl('gallery/logviewer/downloadfile',
-                ['f' => $r->getParam('file')]) . '">' . 'Download file' . '</a>';
+        $dlFile = '<a href="' . $this->getUrl(
+            'gallery/logviewer/downloadfile',
+            ['f' => $r->getParam('file')]
+        ) . '">' . 'Download file' . '</a>';
 
         return $response->setData([
             'status'  => "ok",
             'iframeHtml' => '<pre id="log-pre">' . $dlFile . "\r\n\n" . strip_tags(implode('', $text)). '</pre>'
         ]);
-
     }
-
-    
 }

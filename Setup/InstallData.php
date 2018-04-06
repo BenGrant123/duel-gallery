@@ -81,9 +81,9 @@ class InstallData implements InstallDataInterface
         $eavSetup->removeAttribute(4, 'duel_feed_enabled');
 
         $eavSetup->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_colour',
-                [
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_colour',
+            [
                 'type' => 'varchar',
                 'input' => 'text',
                 'label' => 'Gallery Colour',
@@ -91,12 +91,12 @@ class InstallData implements InstallDataInterface
                 'user_defined' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_background_colour',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_background_colour',
+            [
                 'type' => 'varchar',
                 'input' => 'text',
                 'label' => 'Gallery Background Colour',
@@ -104,12 +104,12 @@ class InstallData implements InstallDataInterface
                 'user_defined' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_rows',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_rows',
+            [
                 'type' => 'varchar',
                 'input' => 'select',
                 'label' => 'Rows',
@@ -118,12 +118,12 @@ class InstallData implements InstallDataInterface
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
                 'source' => 'Duel\Gallery\Model\Product\Attribute\Source\DuelRowsAndColumns'
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_columns',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_columns',
+            [
                 'type' => 'varchar',
                 'input' => 'select',
                 'label' => 'Columns',
@@ -132,12 +132,12 @@ class InstallData implements InstallDataInterface
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
                 'source' => 'Duel\Gallery\Model\Product\Attribute\Source\DuelRowsAndColumns'
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_page_position',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_page_position',
+            [
                 'type' => 'varchar',
                 'input' => 'select',
                 'label' => 'Position gallery on page',
@@ -146,12 +146,12 @@ class InstallData implements InstallDataInterface
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
                 'source' => 'Duel\Gallery\Model\Product\Attribute\Source\DuelPagePositions'
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_page_position_custom',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_page_position_custom',
+            [
                 'type' => 'varchar',
                 'input' => 'text',
                 'label' => 'Position gallery by CSS selector',
@@ -159,12 +159,12 @@ class InstallData implements InstallDataInterface
                 'user_defined' => true,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,
                 'group' => 'Duel',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_is_active',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_is_active',
+            [
                 'type' => 'int',
                 'input' => 'boolean',
                 'label' => 'Show gallery on product page',
@@ -174,12 +174,12 @@ class InstallData implements InstallDataInterface
                 'group' => 'Duel',
                 'default' => false,
                 'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_email_enabled',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_email_enabled',
+            [
                 'type' => 'int',
                 'input' => 'boolean',
                 'label' => 'Enable Duel post-purchase email',
@@ -189,12 +189,12 @@ class InstallData implements InstallDataInterface
                 'group' => 'Duel',
                 'default' => false,
                 'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_feed_enabled',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_feed_enabled',
+            [
                 'type' => 'int',
                 'input' => 'boolean',
                 'label' => 'Add product to Duel JSON feed',
@@ -204,12 +204,12 @@ class InstallData implements InstallDataInterface
                 'group' => 'Duel',
                 'default' => true,
                 'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                ]
-            )
-            ->addAttribute(
-                \Magento\Catalog\Model\Product::ENTITY,
-                'duel_logging',
-                [
+            ]
+        )
+        ->addAttribute(
+            \Magento\Catalog\Model\Product::ENTITY,
+            'duel_logging',
+            [
                 'type' => 'int',
                 'input' => 'boolean',
                 'label' => 'Enable Duel logging',
@@ -219,8 +219,8 @@ class InstallData implements InstallDataInterface
                 'group' => 'Duel',
                 'default' => false,
                 'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Boolean',
-                ]
-            );
+            ]
+        );
 
         $installer->endSetup();
 

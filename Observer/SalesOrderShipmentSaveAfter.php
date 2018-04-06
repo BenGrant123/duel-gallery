@@ -42,8 +42,7 @@ class SalesOrderShipmentSaveAfter implements ObserverInterface
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Sales\Model\Order $_order,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        PendingemailFactory $pendingEmailFactory,
-        array $data = []
+        PendingemailFactory $pendingEmailFactory
     ) {
         $this->_storeManager = $storeManager;
         $this->_order = $_order;

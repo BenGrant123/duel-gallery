@@ -29,7 +29,7 @@ class Remove extends \Magento\Backend\App\Action
     {
         $data = $this->getRequest()->getPostValue();
 
-        $widthrule = $this->widthruleFactory->create();        
+        $widthrule = $this->widthruleFactory->create();
         $params = $this->getRequest()->getParams();
         $widthrule->load($params['remove_rule'])->delete();
       

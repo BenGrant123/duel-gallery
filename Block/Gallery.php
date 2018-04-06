@@ -87,7 +87,6 @@ class Gallery extends Template
         $showGalleries = $this->_scopeConfig
         ->getValue('settings/defaults/show_galleries', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         $showGallery = $this->getProduct()->getData('duel_is_active');
-        
 
         if ($showGalleries == false || $showGallery == false || !$sku || !$brandId) {
             $result['active'] = false;
@@ -121,7 +120,7 @@ class Gallery extends Template
 
         if ($productColumns) {
             $defaultRules['columns'] = $productColumns;
-          }
+        }
         if ($productRows) {
             $defaultRules['rows'] = $productRows;
         }
@@ -130,7 +129,7 @@ class Gallery extends Template
 
         $result['layout_rules'] = [];
 
-        if ($cssRules And !$productColumns And !$productRows) {
+        if ($cssRules and !$productColumns and !$productRows) {
             $result['layout_rules'] = $cssRules;
         }
 
@@ -160,8 +159,9 @@ class Gallery extends Template
         return $gallery;
     }
 
-    protected function getWidthRules() {
-        $widthRules = $this->widthruleFactory->create()->getCollection()->setOrder('minimum_width', 'DESC');;
+    protected function getWidthRules()
+    {
+        $widthRules = $this->widthruleFactory->create()->getCollection()->setOrder('minimum_width', 'DESC');
         $layoutRules = [];
         if ($widthRules) {
             foreach ($widthRules as $widthrule) {

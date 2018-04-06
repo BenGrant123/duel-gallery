@@ -4,19 +4,18 @@ namespace Duel\Gallery\Block\Adminhtml;
 
 use Duel\Gallery\Model\WidthruleFactory;
 use Duel\Gallery\Model\Config\Source\DuelRowsAndColumns;
+use Magento\Backend\Model\Auth\Session;
 
 class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
 {
     public function __construct(
         \Magento\Backend\Block\Context $context,
-        \Magento\Backend\Model\Auth\Session $authSession,
         \Magento\Framework\View\Helper\Js $jsHelper,
+        Session $authSession,
         WidthruleFactory $widthruleFactory,
-        DuelRowsAndColumns $rowsAndColumns,
-        array $data = []
+        DuelRowsAndColumns $rowsAndColumns
     ) {
         $this->_jsHelper = $jsHelper;
-        $this->_authSession = $authSession;
         parent::__construct($context, $authSession, $jsHelper);
         $this->widthruleFactory = $widthruleFactory;
         $this->rowsAndColumns = $rowsAndColumns;
@@ -33,7 +32,7 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
         $updateRuleUrl = $this->getUrl('gallery/widthrule/update');
         $removeRuleUrl = $this->getUrl('gallery/widthrule/remove');
 
-        $html.= 
+        $html.=
         '<script>
             function removeRule (id) {
                 console.log(id);
@@ -54,7 +53,7 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
             'Magento\Config\Block\System\Config\Form\Field'
         );
             
-        foreach ($widthRulesCollection As $widthrule) {
+        foreach ($widthRulesCollection as $widthrule) {
             $html.= $this->getRuleFieldHtml($element, $widthrule, 'minimum_width', 'text', $renderer);
             $html.= $this->getRuleFieldHtml($element, $widthrule, 'rows', 'select', $renderer);
             $html.= $this->getRuleFieldHtml($element, $widthrule, 'columns', 'select', $renderer);
@@ -78,8 +77,7 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
         $property,
         $type,
         $renderer
-    )
-    {
+    ) {
         $optionModel = 'duel_emails_gallery_config/' . $property;
         $label = $property == 'minimum_width' ? 'Minimum iframe width (px)' : ucfirst($property);
         
@@ -92,7 +90,8 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
         return $field->toHtml();
     }
     
-    protected function getUpdateButtonHtml ($fieldset, $id, $renderer) {
+    protected function getUpdateButtonHtml($fieldset, $id, $renderer)
+    {
 
         $field = $fieldset->addField('update_rule_' . $id, 'button', [
                 'value' => 'Update',
@@ -102,7 +101,8 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
         return $field->toHtml();
     }
 
-    protected function getRemoveButtonHtml ($fieldset, $id, $renderer) {
+    protected function getRemoveButtonHtml($fieldset, $id, $renderer)
+    {
 
         $field = $fieldset->addField('remove_rule' . $id, 'button', [
             'value' => 'Remove',
@@ -111,5 +111,4 @@ class Widthrules extends \Magento\Config\Block\System\Config\Form\Fieldset
         ])->setRenderer($renderer);
         return $field->toHtml();
     }
-
 }

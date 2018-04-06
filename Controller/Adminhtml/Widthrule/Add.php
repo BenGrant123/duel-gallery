@@ -53,7 +53,7 @@ class Add extends \Magento\Backend\App\Action
         try {
             $widthrule->setData($entry)->save();
         } catch (\Exception $e) {
-            // Mage::log($e->getMessage(), null, "system.log");
+            $this->messageManager->addError('Rule not added; the rule could not be saved.');
         }
     
         $this->messageManager->addSuccess('CSS Rule added.');

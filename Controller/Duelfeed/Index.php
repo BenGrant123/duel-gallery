@@ -71,11 +71,10 @@ class Index extends \Magento\Framework\App\Action\Action
         ->addAttributeToSelect(['entity_id','name','sku','description','product_url','thumbnail','price']);
         $collectionData = $collection->getData();
         
-        $productsArray = [];        
+        $productsArray = [];
 
         if (!empty($collectionData)) {
             foreach ($collectionData as $item) {
-            	
                 $inStock = $this->_stockItemRepository->get($item['entity_id'])->getIsInStock();
                 $product = $this->productRepository->getById($item['entity_id']);
                 
@@ -108,12 +107,9 @@ class Index extends \Magento\Framework\App\Action\Action
         if ($etag == $reqEtag) {
             $response->clearHeaders()
             ->setHeader('ETag', $etag)
-            ->setStatusCode(\Magento\Framework\App\Response\Http::STATUS_CODE_304) 
+            ->setStatusCode(\Magento\Framework\App\Response\Http::STATUS_CODE_304)
             ->send();
-            
-        }
-        else {
-           
+        } else {
             $response
             ->clearHeaders()
             ->setHeader('ETag', $etag)
@@ -121,6 +117,5 @@ class Index extends \Magento\Framework\App\Action\Action
             ->setHeader('Content-Type', 'application/json')
             ->setContent($json);
         }
-
     }
 }

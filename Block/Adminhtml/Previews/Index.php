@@ -33,7 +33,6 @@ class Index extends \Magento\Backend\Block\Widget\Form\Container
             $this->buttonList->remove('save');
         }
         $this->buttonList->remove('reset');
-        
     }
  
     /**
@@ -61,5 +60,4 @@ class Index extends \Magento\Backend\Block\Widget\Form\Container
  
         return $this->getUrl('*/*/send');
     }
-
 }

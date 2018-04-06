@@ -24,7 +24,7 @@ class Downloadfile extends \Magento\Backend\App\Action
     public function execute()
     {
         $fileName = $this->getRequest()->getParam('f');
-        if (is_null($fileName)) {
+        if ($fileName === null) {
             return;
         }
 
@@ -32,5 +32,4 @@ class Downloadfile extends \Magento\Backend\App\Action
 
         return $this->_fileFactory->create($fileName, file_get_contents($file));
     }
-
 }

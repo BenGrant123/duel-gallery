@@ -42,8 +42,7 @@ class Inlineedit extends \Magento\Backend\App\Action
         Filter $filter,
         ProductRepository $productRepository,
         Iterator $iterator,
-        CollectionFactory $collectionFactory,
-        array $data = []
+        CollectionFactory $collectionFactory
     ) {
         $this->_filter = $filter;
         $this->_collectionFactory = $collectionFactory;

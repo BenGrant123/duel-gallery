@@ -4,19 +4,18 @@ namespace Duel\Gallery\Block\Adminhtml;
 
 use Duel\Gallery\Model\WidthruleFactory;
 use Duel\Gallery\Model\Config\Source\DuelRowsAndColumns;
+use Magento\Backend\Model\Auth\Session;
 
 class Newwidthrule extends \Magento\Config\Block\System\Config\Form\Fieldset
 {
     public function __construct(
         \Magento\Backend\Block\Context $context,
-        \Magento\Backend\Model\Auth\Session $authSession,
         \Magento\Framework\View\Helper\Js $jsHelper,
+        Session $authSession,
         WidthruleFactory $widthruleFactory,
-        DuelRowsAndColumns $rowsAndColumns,
-        array $data = []
+        DuelRowsAndColumns $rowsAndColumns
     ) {
         $this->_jsHelper = $jsHelper;
-        $this->_authSession = $authSession;
         parent::__construct($context, $authSession, $jsHelper);
         $this->widthruleFactory = $widthruleFactory;
         $this->rowsAndColumns = $rowsAndColumns;
@@ -52,28 +51,35 @@ class Newwidthrule extends \Magento\Config\Block\System\Config\Form\Fieldset
             'Magento\Config\Block\System\Config\Form\Field'
         );
 
-        $field = $fieldset->addField('add_widthrule_' . $property, $type,
+        $field = $fieldset->addField(
+            'add_widthrule_' . $property,
+            $type,
             [
                 'name'          => 'addrule_'.$property.'[value]',
                 'label'         => $label,
                 'values'        => $type == 'select' ? $this->rowsAndColumns->toOptionArray() : '',
-            ])->setRenderer($renderer);
+            ]
+        )->setRenderer($renderer);
         return $field->toHtml();
     }
     
-    protected function getAddButtonHtml ($fieldset) {
+    protected function getAddButtonHtml($fieldset)
+    {
         $renderer = $this->getLayout()->createBlock(
             'Magento\Config\Block\System\Config\Form\Field'
         );
 
-        $field = $fieldset->addField('add_rule', 'button', array(
-            'value' => 'Add CSS width rule',
-            'name'  => 'add_rule',
-            'class' => 'form-button',
-            'onclick' => 'getAddRuleUrl();',
-            'renderer' => ''
-        ))->setRenderer($renderer);
+        $field = $fieldset->addField(
+            'add_rule',
+            'button',
+            [
+                'value' => 'Add CSS width rule',
+                'name'  => 'add_rule',
+                'class' => 'form-button',
+                'onclick' => 'getAddRuleUrl();',
+                'renderer' => ''
+            ]
+        )->setRenderer($renderer);
         return $field->toHtml();
     }
-
 }

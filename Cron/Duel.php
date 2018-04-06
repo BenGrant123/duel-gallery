@@ -34,7 +34,6 @@ class Duel
      * @param ScopeConfigInterface  $scopeConfig         Scope Config
      * @param PendingemailFactory   $pendingEmailFactory Pending Email Factory
      * @param ProductRepository     $productRepository   Product Factory
-     * @param array                 $data                Data
      */
     public function __construct(
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
@@ -44,8 +43,7 @@ class Duel
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Duel\Gallery\Model\PendingemailFactory $pendingEmailFactory,
         \Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable $catalogProductTypeConfigurable,
-        \Magento\Catalog\Model\ProductRepository $productRepository,
-        array $data = []
+        \Magento\Catalog\Model\ProductRepository $productRepository
     ) {
         $this->_date = $date;
         $this->transportBuilder = $transportBuilder;
@@ -75,7 +73,7 @@ class Duel
         if ($config['logging']) {
             $config['logFile'] = fopen('./var/log/duel_cron.log', 'a');
             fwrite($config['logFile'], $config['dateGmt'] . ' Duel cron job' . "\r\n");
-        }        
+        }
 
         $emailsEnabled = $this->_scopeConfig
         ->getValue('settings/emails/duel_email_enabled', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
@@ -180,7 +178,7 @@ class Duel
                 if ($itemEmailEnabled and $qtyNotRefunded) {
                     $productThumbnail = $_item->getProduct()->getThumbnail();
                     
-                    if (!$productThumbnail Or $productThumbnail == 'no_selection') {
+                    if (!$productThumbnail or $productThumbnail == 'no_selection') {
                         $thumbnail = ($config['placeholder'] == null) ? "" : $config['baseMediaUrl'] . 'catalog/product/placeholder/' . $config['placeholder'];
                     } else {
                         $thumbnail = $config['baseMediaUrl'] . 'catalog/product' . $productThumbnail;

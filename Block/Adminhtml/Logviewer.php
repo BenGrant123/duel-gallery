@@ -59,36 +59,33 @@ class Logviewer extends Template
     public function getLogFilesSelect()
     {
 
-      $logPath = $this->_dir->getPath('log');
-      $logFiles = [];
+        $logPath = $this->_dir->getPath('log');
+        $logFiles = [];
 
-      $logFiles = $this->_file->readDirectory($logPath);
+        $logFiles = $this->_file->readDirectory($logPath);
 
-      $flags = \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS;
-      $iterator = new \FilesystemIterator($logPath, $flags);
-      $logFiles = [];
-      /** @var \FilesystemIterator $file */
-      foreach ($iterator as $file) {
-          $logFiles[] = $file;
-      }
-      sort($logFiles);
-      
-      if (empty($logFiles)) {
-          return $this->__('No log files found');
-      }
-      
+        $flags = \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::UNIX_PATHS;
+        $iterator = new \FilesystemIterator($logPath, $flags);
+        $logFiles = [];
+        
+        foreach ($iterator as $file) {
+            $logFiles[] = $file;
+        }
+        sort($logFiles);
 
-      $html = '<label for="rl-log-switcher">Please choose a file:</label><select id="rl-log-switcher" name="rl-log-switcher"><option value=""></option>';
+        if (empty($logFiles)) {
+            return $this->__('No log files found');
+        }
 
-      foreach ($logFiles as $l) {
-          $htmlBody = $this->getContent($l->getFilename());
-          $html .= '<option value="' . $l->getFilename() . '">' . $l->getFilename() . '</option>';
-      }
+        $html = '<label for="rl-log-switcher">Please choose a file:</label><select id="rl-log-switcher" name="rl-log-switcher"><option value=""></option>';
 
-      $html .= '</select>';
+        foreach ($logFiles as $l) {
+            $htmlBody = $this->getContent($l->getFilename());
+            $html .= '<option value="' . $l->getFilename() . '">' . $l->getFilename() . '</option>';
+        }
 
-      return $html;
+        $html .= '</select>';
+
+        return $html;
     }
-
-    
 }

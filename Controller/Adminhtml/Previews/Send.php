@@ -60,7 +60,6 @@ class Send extends \Magento\Backend\App\Action
         $dateNow = $this->date->gmtDate();
 
         fwrite($config['logFile'], $dateNow . " Duel email preview." . "\r\n");
-    	
         $data = $this->getRequest()->getPostValue();
         
         $storeId = $this->storeManager->getStore()->getId();
@@ -121,7 +120,6 @@ class Send extends \Magento\Backend\App\Action
                 if (!empty($orderItems)) {
                     $this->sendDuelEmail($value->getId(), $orderItems, $data['preview_email'], $config);
                 }
-                
             }
         } else {
             fwrite($config['logFile'], $dateNow . " " . sizeof($collection) . " pending follow-up emails were found. Attempt to simulate Duel cron job." . "\r\n");
@@ -133,18 +131,17 @@ class Send extends \Magento\Backend\App\Action
                 if (!empty($orderItems)) {
                     $this->sendDuelEmail($value['order_id'], $orderItems, $data['preview_email'], $config);
                 }
-                
             }
         }
        
         $this->_redirect('gallery/previews/index');
     }
  
-    private function prepareProducts($products, $config) {
+    private function prepareProducts($products, $config)
+    {
         $storeUrl = $this->storeManager->getStore()->getBaseUrl();
         $mockItems = [];
         foreach ($products as $product) {
-
             $parentByChild = $this->configurable->getParentIdsByChild($product->getId());
             if ($parentByChild) {
                 $parentId = $parentByChild[0];
@@ -154,7 +151,7 @@ class Send extends \Magento\Backend\App\Action
             }
 
             $productThumbnail = $product->getThumbnail();
-            if (!$productThumbnail Or $productThumbnail == 'no_selection') {
+            if (!$productThumbnail or $productThumbnail == 'no_selection') {
                 $thumbnail = ($config['placeholder'] == null) ? "" : $config['baseMediaUrl'] . 'catalog/product/placeholder/' . $config['placeholder'];
             } else {
                 $thumbnail = $config['baseMediaUrl'] . 'catalog/product' . $productThumbnail;
@@ -189,7 +186,7 @@ class Send extends \Magento\Backend\App\Action
                 }
                    
                 $productThumbnail = $item->getProduct()->getThumbnail();
-                if (!$productThumbnail Or $productThumbnail == 'no_selection') {
+                if (!$productThumbnail or $productThumbnail == 'no_selection') {
                     $thumbnail = ($config['placeholder'] == null) ? "" : $config['baseMediaUrl'] . 'catalog/product/placeholder/' . $config['placeholder'];
                 } else {
                     $thumbnail = $config['baseMediaUrl'] . 'catalog/product' . $productThumbnail;
@@ -204,7 +201,6 @@ class Send extends \Magento\Backend\App\Action
                     'name' => $item->getName(),
                 ];
                 array_push($orderItems, $item);
-                
             }
         }
         return $orderItems;
